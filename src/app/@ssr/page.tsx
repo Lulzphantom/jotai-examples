@@ -1,15 +1,8 @@
-import ExampleContainer from "@/components/example-container";
-import SSR from "@/components/examples/ssr";
+import React from 'react'
 
-const Page = async () => {
-  const randomNumber = Math.floor(Math.random() * 100) + 1;
-  await new Promise((resolve) => setTimeout(resolve, 0));
+export default function Page() {
+  // Generate a random number between 1 and 100 (inclusive).
+  const randomNumber = crypto.getRandomValues(new Uint32Array(1))[0] % 100 + 1;
 
-  return (
-    <ExampleContainer title="SSR">
-      <SSR count={randomNumber} />
-    </ExampleContainer>
-  );
-};
-
-export default Page;
+  return <div>Random Number: {randomNumber}</div>
+}
